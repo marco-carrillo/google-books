@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
 import ResultTitle from "../components/ResultTitle";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
@@ -21,30 +20,7 @@ function Books() {
   // No default action at loading time.  Leaving stub for future use  */
   //*******************************************************************/
   useEffect(() => {
-    // loadBooks()
   }, [])
-
-  //****************************************************************/
-  // Searches and loads all books that matches the search criteria */ 
-  // not needed in this API
-  //****************************************************************/
-   function loadBooks() {
-    API.getBooks()
-      .then(res => { 
-        setBooks(res.data)}
-      )
-      .catch(err => console.log(err));
-  };
-
-  //*************************************************************************************/
-  // Deletes a book from the database with a given id, then reloads books from the db
-  // not needed in this API
-  //*************************************************************************************/
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
-      .catch(err => console.log(err));
-  }
 
   //****************************************************************************/
   // Handles updating component state when the user types into the input field */
@@ -62,9 +38,10 @@ function Books() {
   //**********************************************************************************/
   function handleFormSubmit(event) {
     event.preventDefault();
-    let apiquery=`https://www.googleapis.com/books/v1/volumes?q="${formObject.bookname}"`;
+    let apiKey='AIzaSyAZwfXexaZef8rwdJ6qy28fcVw60BTskyI';
+    let apiQuery=`https://www.googleapis.com/books/v1/volumes?q="${formObject.bookname}"&key=${apiKey}&maxResults=40`;
 
-      fetch(apiquery)
+      fetch(apiQuery)
       .then(res => res.json())
       .then(json => {
 
