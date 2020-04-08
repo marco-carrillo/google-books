@@ -20,7 +20,6 @@ module.exports = {
     let apiKey=process.env.API_KEY;
     console.log(req.query.search);
     let apiQuery=`https://www.googleapis.com/books/v1/volumes?q="${req.query.search}"&key=${apiKey}&maxResults=40`;
-    console.log(apiQuery);
     //**************************************/
     //  Making the call to the google API  */
     //**************************************/
