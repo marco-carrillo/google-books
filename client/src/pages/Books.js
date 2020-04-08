@@ -10,6 +10,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import "./style.css";
 import ResultsTable from "../components/ResultsTable"
+import axios from "axios";
 
 function Books() {
   // Setting our component's initial state
@@ -32,20 +33,18 @@ function Books() {
   };
 
   //**********************************************************************************/
-  // When the form is submitted, use fetch to call Google API and retrieve sets of   */
-  // books.  If there are results, then update the component's state with the        */
-  // list of books retrieved.                                                        */
+  // When the form is submitted, use fetch to call the server API which in turn will */
+  // call Google API and retrieve sets of books.  If there are results, then update  */
+  // the component's state with the list of books retrieved.                         */                               */
   //**********************************************************************************/
   function handleFormSubmit(event) {
     event.preventDefault();
 
-      fetch(/api/googleAPI/)
-      .then(res => res.json())
-      .then(json => {
-
+    axios.get('/api/books/google',{params: { search: formObject.bookname}})
+      .then(res => {
         let results=[];
         let record={};
-        json.items.forEach(result=>{
+        res.data.items.forEach(result=>{
           record={};
           record.id=(result.id) ? result.id : Math.floor(Math.random()*1000000);
           record.title=(result.volumeInfo.title) ? result.volumeInfo.title : "Sorry, no information from Google";

@@ -5,6 +5,10 @@
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
 
+router
+  .route("/google")
+  .get(booksController.getGoogleBooks);
+
 //**********************************************************************************/
 // Serves two route "/api/books".  If HTTP GET, gets all books in the collection.  */
 // If HTTP POST then creates a new document in the Mongoose collection.            */

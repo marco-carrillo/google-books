@@ -2,6 +2,8 @@
 //  Getting the Mongoose models for the collection table   */
 //**********************************************************/
 const db = require("../models");
+const axios = require("axios");
+require('dotenv').config();
 
 //********************************************/
 // Defining methods for the booksController  */
@@ -10,6 +12,22 @@ module.exports = {
   //***************************************************************/
   //  Serves all the books, sorting it from most recent to oldest */
   //***************************************************************/
+
+  getGoogleBooks:  function(req,res){
+    //********************************************************/
+    //  Getting Google API keys as an enviromental variable  */
+    //********************************************************/
+    let apiKey=process.env.API_KEY;
+    console.log(req.query.search);
+    let apiQuery=`https://www.googleapis.com/books/v1/volumes?q="${req.query.search}"&key=${apiKey}&maxResults=40`;
+    console.log(apiQuery);
+    //**************************************/
+    //  Making the call to the google API  */
+    //**************************************/
+    axios.get(apiQuery)
+         .then(response=>res.json(response.data))
+         .catch(err => res.status(422).json(err));
+  },
 
   findAll: function(req, res) {
   
