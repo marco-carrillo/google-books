@@ -51,4 +51,4 @@ This application has been deployed to Heroku at https://google-books-001.herokua
 
 ##  Overall application demonstration
 
-![GIF of input](./google_books.gif)
+![GIF of input](./google-books.gif)
