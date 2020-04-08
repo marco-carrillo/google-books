@@ -18,7 +18,6 @@ module.exports = {
     //  Getting Google API keys as an enviromental variable  */
     //********************************************************/
     let apiKey=process.env.API_KEY;
-    console.log(req.query.search);
     let apiQuery=`https://www.googleapis.com/books/v1/volumes?q="${req.query.search}"&key=${apiKey}&maxResults=40`;
     //**************************************/
     //  Making the call to the google API  */
@@ -26,7 +25,7 @@ module.exports = {
     axios.get(apiQuery)
          .then(response=>res.json(response.data))
          .catch(err => res.status(422).json(err));
-  },
+ },
 
   findAll: function(req, res) {
   

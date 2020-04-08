@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
 import ResultTitle from "../components/ResultTitle";
 import Jumbotron from "../components/Jumbotron";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import "./style.css";
@@ -68,8 +67,8 @@ function Books() {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>(React) Google Books Search</h1>
-              <h3>Search for and Save Books of Interes</h3>
+              <h2>(React) Google Books Search</h2>
+              <h4>Search for and Save Books of Interes</h4>
             </Jumbotron>
           </Col>
           </Row>
@@ -81,7 +80,7 @@ function Books() {
         <Row>
           <Col size="md-12">
             <SearchBox>
-              <h2 className="text-left">Book</h2>
+              <h4 className="text-left">Book</h4>
               <form>
                   <Input
                     onChange={handleInputChange}
@@ -90,7 +89,7 @@ function Books() {
                   <FormBtn
                     disabled={!formObject.bookname}
                     onClick={handleFormSubmit}>
-                    <h3>Search Book</h3>
+                    <h4>Search Book</h4>
                   </FormBtn>
               </form>
             </SearchBox>

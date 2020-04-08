@@ -20,7 +20,7 @@ export function TextArea(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-info bg-white text-info">
+    <button {...props} style={{ float: "right", marginBottom: 5 }} className="btn btn-info bg-white text-info align-center text-center">
       {props.children}
     </button>
   );
