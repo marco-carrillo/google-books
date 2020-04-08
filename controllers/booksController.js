@@ -7,11 +7,12 @@ const db = require("../models");
 // Defining methods for the booksController  */
 //********************************************/
 module.exports = {
-
   //***************************************************************/
   //  Serves all the books, sorting it from most recent to oldest */
   //***************************************************************/
+
   findAll: function(req, res) {
+  
     db.Book
       .find(req.query)
       .sort({ date: -1 })

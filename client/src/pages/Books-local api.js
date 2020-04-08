@@ -38,8 +38,10 @@ function Books() {
   //**********************************************************************************/
   function handleFormSubmit(event) {
     event.preventDefault();
+    let apiKey='123';
+    let apiQuery=`https://www.googleapis.com/books/v1/volumes?q="${formObject.bookname}"&key=${apiKey}&maxResults=40`;
 
-      fetch(/api/googleAPI/)
+      fetch(apiQuery)
       .then(res => res.json())
       .then(json => {
 
